@@ -18,7 +18,7 @@ This framework comprised of 3 agents.
 - `schemas/` — Parser Agent output schema (JSON)
 - `outputs/` — final structured outputs from each agent, final compiled report
 
-## How to Product:
+## How to Produce:
 1. run Parser Agent
 2. run Factor Generator Agent
 3. run Master Agent
