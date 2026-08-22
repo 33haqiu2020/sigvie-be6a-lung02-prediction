@@ -1,0 +1,316 @@
+{
+  "_comment": "临床数据解析Agent输出（单通路，无回测）。仅事实层，不含预测/推理。检索执行日 2026-08-21。数值均附原文出处；只拿到摘要结论而未获数据正文者标 data_retrieval_incomplete=true。SigVie-002 作为先例完整提取。信源分级：Tier1=公司/监管/CT.gov/同行评审期刊；Tier2=专业肿瘤媒体；Tier3=分析/预览/聚合。",
+  "meta": {
+    "target_drug": "sigvotatug vedotin (SGN-B6A / PF-08046047)；IB6(整合素β6)导向 ADC，MMAE 载荷，mc-vc 可裂解连接子，DAR≈4；Pfizer/Seagen",
+    "target_trial": "Be6A Lung-02 (NCT06758401)。注意：近期文献/CT.gov 已将其更名为 SigVie-003；两者为同一试验。SV+帕博利珠单抗 vs 帕博利珠单抗单药，一线 PD-L1 TPS≥50% aNSCLC",
+    "precedent_trial": "SigVie-002 / Be6A Lung-01 (NCT06012435) — 已读出(2026-06-22 topline)，作为先例教训。SV 单药 vs 多西他赛，既往治疗过的非鳞 NSCLC(主要为二线+)",
+    "retrieval_timestamp": "2026-08-21",
+    "naming_caveat": "三个名字易混：SGNB6A-002=Be6A Lung-01=SigVie-002=NCT06012435（单药 vs 多西他赛，已失败）；Be6A Lung-02=SigVie-003=NCT06758401（联合帕博 vs 帕博，目标试验，进行中）。检索时必须以 NCT 号锚定。"
+  },
+  "factors": [
+    {
+      "factor_id": "F1",
+      "factor_name": "早期疗效信号强度与一致性",
+      "tier": 1,
+      "data_available": true,
+      "evidence": [
+        {
+          "finding": "SV 单药在 aNSCLC（SGNB6A-001 Ⅰ期剂量扩展，全部剂量组）确认 ORR 19.0%，含 3 例 CR + 19 例 PR",
+          "metric_values": {
+            "ORR": "cORR 19.0% (95% CI 12.3–27.3)，n=116（数据截止 2024-11-26 队列，JCO 2026 正刊）；另一切面 cORR 19.5% (95% CI 12.6–28.0)，n=113（数据截止 2023-12-01，2024 ASCO 摘要 8521）",
+            "DoR": "全人群 mDOR 11.3 个月（JCO 2026 正刊，截止 2024-11-26）",
+            "PFS": "全人群该信源未报告具体中位 PFS 数值（非鳞/紫杉烷未用亚组见下）",
+            "OS": "该信源未报告此指标（Ⅰ期单臂，未做 OS 对照）",
+            "CR_PR": "3 CR + 19 PR（n=116 口径，Tier2 转述）"
+          },
+          "subgroup_consistency_note": "存在明显亚组异质性：非鳞、紫杉烷未用亚组疗效显著高于全人群。非鳞紫杉烷未用亚组 cORR 31.0% (95% CI 17.6–47.1)，2 CR+11 PR，mPFS 6.4 个月 (95% CI 4.5–10.5)（Tier2 OncLive/Sanborn，截止 2024-11-26 口径）；同一 JCO 2026 正刊摘要给出该亚组 ORR 29%、mDOR 12.8 个月；2024 ASCO 摘要给出 cORR 32.5% (95% CI 18.6–49.1)。三个数值来自不同数据截止/亚组定义，见 conflicting_data_note。",
+          "source": {
+            "citation": "Peters S, et al. First-in-Human, Phase I Study of Sigvotatug Vedotin ... Dose Expansion in Advanced NSCLC. J Clin Oncol 2026;44(17):1635-1645 (epub 2026-04-20); PubMed 42008777。补充：OncLive 'Novel ADC Sigvotatug Vedotin Generates Early Efficacy'（2025-08）；2024 ASCO 摘要 8521 (J Clin Oncol 42:16_suppl,8521)",
+            "source_tier": "一级（JCO 正刊、ASCO 摘要）+ 二级（OncLive 转述具体 CI）",
+            "disclosure_date": "2024-06-01(ASCO 8521) / 2026-04-20(JCO 正刊)"
+          },
+          "data_retrieval_incomplete": false,
+          "retrieval_note": "单药数值已获正文/摘要正文并二次核对。核心数值（cORR 19.0%/19.5%，非鳞紫杉烷未用 29%–32.5%）已二次核对，逐字符合各自信源；不同数值对应不同数据截止，未做四舍五入合并。"
+        },
+        {
+          "finding": "SV + 帕博利珠单抗一线 NSCLC（SGNB6A-001 扩展队列，无已知 EGFR/ALK，n=21）确认 ORR 42.9%",
+          "metric_values": {
+            "ORR": "cORR 42.9% (95% CI 21.8–66.0)，n=21；同队列含未确认在内 ORR 57.1% (95% CI 34.0–78.2)",
+            "CR": "CR 率 9.5%",
+            "DCR": "90.5% (95% CI 69.6–98.8)",
+            "DoR": "mDOR 未达到（中位随访 4.8 个月，95% CI 3.7–6.0）",
+            "PFS": "该信源未报告此指标",
+            "OS": "该信源未报告此指标"
+          },
+          "subgroup_consistency_note": "另有更小的 TPS≥1 NSCLC 子集（n=7）：ORR 57%、cORR 29%（2025 ASCO 摘要 3010）。样本极小，解读需谨慎。",
+          "source": {
+            "citation": "Sehgal K, et al. SV + pembrolizumab: initial results (SGNB6A-001). 2025 ASCO 摘要 3010 (J Clin Oncol 43:16_suppl,3010)；具体 CI/CR/DCR 数值转述自 OncLive（2025-08，Dr Sanborn / Dr Malhotra）",
+            "source_tier": "一级（ASCO 摘要）+ 二级（OncLive 转述 CI）",
+            "disclosure_date": "2025-06-01"
+          },
+          "data_retrieval_incomplete": false,
+          "retrieval_note": "n=21 联合队列 cORR 42.9%/CR 9.5%/DCR 90.5%/mDOR NR 已二次核对，逐字符合 OncLive 及 ASCO 摘要结论句。"
+        },
+        {
+          "finding": "SV + 帕博【最新且当前权威切面】：2026 ASCO 摘要 8522（Sehgal 等，数据截止 2025-09-30）。SV 1.8 mg/kg AiBW IV Q2W + 帕博 400 mg IV Q6W。初治 aNSCLC 扩展队列共 35 例接受治疗，中位随访 10.6 个月（95% CI 7.6–11.9）；可评估疗效 28 例。全人群 71 例接受≥1剂 SV+P（37 aNSCLC、33 HNSCC、1 食管癌），34 例仍在治。cORR 均为研究者评估、按 RECIST v1.1。",
+          "metric_values": {
+            "cORR_by_PD-L1": "PD-L1 TPS<1%(n=10)：cORR 50% (95% CI 19–81)｜PD-L1 TPS≥1%(n=18)：cORR 50% (95% CI 26–74)，另有1例PR待确认｜PD-L1 TPS≥50%(n=5)：cORR 80%，另有1例PR待确认【注：目标试验富集人群即 TPS≥50%，但此处 n 仅=5】",
+            "ORR_incl_unconfirmed_by_PD-L1": "PD-L1 TPS<1%(n=10)：ORR 50% (95% CI 19–81)｜PD-L1 TPS≥1%(n=18)：ORR 61% (95% CI 36–83)",
+            "cORR_by_histology": "非鳞(n=19)：cORR 53% (95% CI 29–76)；含未确认 ORR 63% (95% CI 38–84)｜鳞状(n=9)：cORR 44% (95% CI 14–79)；ORR 44% (95% CI 14–79)。原文述'不论 TPS，非鳞(53%)数值上高于鳞状(44%)'",
+            "BOR_detail": "TPS<1%(n=10)：CR 0/PR 50%/SD 40%/NE 10%｜TPS≥1%(n=18)：CR 6%/PR 44%/SD 44%/NE 6%｜非鳞(n=19)：CR 5%/PR 47%/SD 42%/NE 5%｜鳞(n=9)：CR 0/PR 44%/SD 44%/NE 11%",
+            "DCR": "TPS<1%(n=10)：90% (95% CI 56–100)｜TPS≥1%(n=18)：94% (95% CI 73–100)｜非鳞(n=19)：95% (95% CI 74–100)｜鳞(n=9)：89% (95% CI 52–100)",
+            "DoR": "mDOR：TPS<1%(n=10)：NR (95% CI 2.9–NR)｜TPS≥1%(n=18)：8.1 个月 (95% CI 4.2–NR)｜非鳞(n=19)：8.1 个月 (95% CI 2.9–NR)｜鳞(n=9)：NR (95% CI 4.2–NR)",
+            "PFS": "该信源未报告此指标（摘要未给出 PFS）",
+            "OS": "该信源未报告此指标（Ⅰ期单臂，无 OS 对照）",
+            "safety": "全人群 71 例：任意级 TEAE 96%、≥3级 TEAE 59%；治疗相关任意级 85%、治疗相关≥3级 44%。最常见 TEAE(>30%)：脱发、食欲下降、乏力、恶心。34 例仍在治。"
+          },
+          "subgroup_consistency_note": "跨 PD-L1 与组织学总体一致偏正向，但存在两点异质性/局限：①非鳞(53%) 数值上高于鳞状(44%)；②TPS≥50%(目标试验富集人群) cORR 达 80%，但 n 仅=5，置信区间无法从摘要计算，样本极小、稳健性弱。cORR 在 TPS<1% 与 TPS≥1% 均为 50%，提示（在此Ⅰ期小样本中）PD-L1 高低对 cORR 无明显梯度——与'PD-L1 富集'逻辑的关系需下游关注。",
+          "source": {
+            "citation": "Sehgal K, Benitez Fuentes JD, Yang M-H, et al. Sigvotatug vedotin (SV) plus pembrolizumab: Updated results from the phase 1 study (SGNB6A-001). J Clin Oncol 2026;44(16_suppl):8522（2026 ASCO 摘要，全文由用户提供）。数据截止 2025-09-30。",
+            "source_tier": "一级（ASCO 摘要全文，含数据表）",
+            "disclosure_date": "2026-05/06（2026 ASCO 会议）"
+          },
+          "data_retrieval_incomplete": false,
+          "retrieval_note": "已获 8522 摘要全文含数据表；此前标注的'待核验'50%/80% 数值现由一手摘要确认并精确到 CI。核心数值已逐字核对：TPS≥50% cORR 80%(n=5)、TPS≥1% cORR 50%(95% CI 26–74)、非鳞 cORR 53%、鳞 44%、mDOR 8.1mo(TPS≥1%/非鳞) 均与原文数据表一致，未四舍五入。关键使用警示：目标试验富集人群(TPS≥50%)在本Ⅰ期仅 n=5，为最强正向数字但样本最小。"
+        }
+      ],
+      "conflicting_data_note": "单药 NSCLC cORR 存在多切面：19.0%(n=116, 2024-11-26截止, JCO正刊) vs 19.5%(n=113, 2023-12-01截止, ASCO2024)。非鳞紫杉烷未用亚组：29%(JCO正刊摘要) vs 31.0%(OncLive, n=42) vs 32.5%(ASCO2024)——差异源于数据截止日与亚组/剂量定义不同，非单纯误差；并列保留交主控 Agent 决定采信。联合队列(SV+P)有两个前后切面，非冲突而是随访成熟：2025 ASCO(n=21, 无EGFR/ALK, cORR 42.9%, 中位随访4.8mo, mDOR NR) → 2026 ASCO 8522(n=35治疗/28可评估, 数据截止2025-09-30, 中位随访10.6mo, 按PD-L1/组织学分层, mDOR 已达8.1mo)。以 8522 为当前权威切面。同队列未确认 ORR 与确认 cORR 为两口径，非冲突。",
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F2",
+      "factor_name": "历史成功率(base rate) — 两层同心圈",
+      "tier": 1,
+      "data_available": true,
+      "comparable_trials": [
+        {
+          "trial_name": "EVOKE-03 / KEYNOTE-D46 (NCT05609968)",
+          "drug_regimen": "sacituzumab govitecan(TROP2 ADC, SN-38载荷) + 帕博利珠单抗 vs 帕博利珠单抗单药",
+          "mechanism": "ADC + PD-1",
+          "line_of_therapy": "一线",
+          "biomarker_criteria": "转移性 NSCLC, PD-L1 TPS≥50%, 无 EGFR/ALK/ROS1; N≈620, 1:1",
+          "comparability_ring": "core（核心圈：ADC+PD-1 联合、一线、PD-L1 TPS≥50%——与 Be6A Lung-02 设计几乎逐条对应，是可比性最高的完成态先例）",
+          "inclusion_rationale": "机制(ADC+PD-1)、治疗线(一线)、富集切点(PD-L1 TPS≥50%)、对照臂(帕博单药)四要素全部与目标试验匹配，唯一差异为 ADC 靶点(TROP2 vs IB6)与载荷(SN-38 vs MMAE)。按'机制≈适应症/治疗线>靶点'优先级，归核心圈。",
+          "phase3_outcome": "失败/提前终止（2026-06-08 Merck+Gilead 宣布终止）",
+          "key_endpoint_result": "PFS 有数值改善但未达统计学显著；OS 在预设终期分析'不太可能达到显著'（eDMC 建议终止）。具体 HR/CI 公司未在 PR 披露。安全性无新信号。",
+          "source": {
+            "citation": "Merck & Gilead. 'Provide Update on Phase 3 KEYNOTE-D46/EVOKE-03 Study.' 新闻稿 2026-06-08 (merck.com)；Targeted Oncology / CancerNetwork 2026-06 转述",
+            "source_tier": "一级（公司联合公告）+ 二级（转述）",
+            "disclosure_date": "2026-06-08"
+          }
+        },
+        {
+          "trial_name": "TROPION-Lung08 (NCT05215340)",
+          "drug_regimen": "datopotamab deruxtecan(Dato-DXd, TROP2 ADC) + 帕博利珠单抗 vs 帕博利珠单抗单药",
+          "mechanism": "ADC + PD-1",
+          "line_of_therapy": "一线",
+          "biomarker_criteria": "aNSCLC, 无 AGA, PD-L1 TPS≥50%; 双主要终点 PFS+OS",
+          "comparability_ring": "core（核心圈：设计与 Be6A Lung-02 逐条对应）",
+          "inclusion_rationale": "与目标试验设计高度同构：ADC+帕博 vs 帕博单药、一线、PD-L1≥50%、双主要终点 PFS+OS。唯 ADC 靶点/载荷不同。归核心圈。",
+          "phase3_outcome": "进行中 / 顶线结果在本次检索的信源中未披露",
+          "key_endpoint_result": "本次检索未找到 topline 读出；无法提供结果数值",
+          "source": {
+            "citation": "TROPION-Lung08 设计: Future Oncol (Ahn 等) doi:10.2217/fon-2023-0230; 状态转述见 ASCO Daily News / OncLive 2025–2026",
+            "source_tier": "一级（设计文献）",
+            "disclosure_date": "设计发表 2023；结果未披露"
+          }
+        },
+        {
+          "trial_name": "OptiTROP-Lung05 (NCT06448312)",
+          "drug_regimen": "sacituzumab tirumotecan (sac-TMT, TROP2 ADC) + 帕博利珠单抗 vs 帕博利珠单抗单药",
+          "mechanism": "ADC + PD-1",
+          "line_of_therapy": "一线",
+          "biomarker_criteria": "局晚/转移 NSCLC, 无 EGFR/ALK, PD-L1 TPS≥1%（含低表达）; n=413, 1:1（中国主导）",
+          "comparability_ring": "extended（扩展圈：放宽 PD-L1 维度——纳入 TPS≥1% 而非仅≥50%；且为中国人群/不同 ADC）",
+          "inclusion_rationale": "机制(ADC+PD-1)、治疗线(一线)、对照(帕博单药)匹配，但富集切点放宽到 TPS≥1%（含低表达人群），且地域/药物不同，可比性打折，归扩展圈。",
+          "phase3_outcome": "成功（计划中期分析，正向）",
+          "key_endpoint_result": "mPFS 未达到 vs 帕博 5.7 个月，HR 0.35 (95% CI 0.26–0.47, P<.0001)；ORR 70.2% vs 42.0%；OS 数据不成熟但趋势向好 HR 0.55 (95% CI 0.36–0.85)。PD-L1 TPS≥50% 亚组 PFS HR 0.47 (95% CI 0.29–0.77)（较低表达亚组 HR 0.28 更弱）",
+          "source": {
+            "citation": "2026 ASCO OptiTROP-Lung05 中期分析；Targeted Oncology 'ASCO 2026 Lung Cancer Data Highlight...'(2026-05/06)",
+            "source_tier": "二级（专业媒体转述一手会议数据）",
+            "disclosure_date": "2026-05/06"
+          }
+        },
+        {
+          "trial_name": "SigVie-002 / Be6A Lung-01 (NCT06012435) — 先例本体",
+          "drug_regimen": "sigvotatug vedotin 单药 vs 多西他赛",
+          "mechanism": "ADC 单药（无 IO）",
+          "line_of_therapy": "二线+（约2/3为二线，即仅1线既往治疗）",
+          "biomarker_criteria": "既往治疗过的非鳞 aNSCLC；n=703；主要终点 OS",
+          "comparability_ring": "extended（扩展圈：同药物同靶点，但为单药 ADC、非一线、非联合 IO——用于看 IB6 单机制在人体的天花板与教训）",
+          "inclusion_rationale": "与目标试验为同药同靶点，但机制(单药 ADC 非联合)与治疗线(二线+非一线)均不同；作为'同药先例教训'纳入扩展圈，重点看其失败模式。",
+          "phase3_outcome": "失败（2026-06-22 topline：总人群未达主要终点 OS 统计学显著）",
+          "key_endpoint_result": "总人群 OS 对比多西他赛未达统计学显著（HR/CI 公司未在 topline 披露）；预设亚组：仅1线既往治疗者(约2/3)OS 与 PFS 呈更强趋势；探索性分析未见 IB6 表达水平与获益的清晰暴露-反应关系；安全性可管理。SV D1/15 q28d vs 多西他赛 D1 q21d。",
+          "source": {
+            "citation": "Pfizer. 'Announces Topline Phase 3 Results for Sigvotatug Vedotin...' 新闻稿 2026-06-22 (pfizer.com / businesswire)；AJMC/Targeted Oncology/OncLive 2026-06 转述",
+            "source_tier": "一级（公司 topline 公告）+ 二级（转述）",
+            "disclosure_date": "2026-06-22"
+          }
+        }
+      ],
+      "base_rate_summary": {
+        "core_ring": "核心圈（ADC+PD-1 vs 帕博单药、一线、PD-L1 TPS≥50% NSCLC）客观汇总：已读出 1 个 = EVOKE-03（失败）；1 个进行中/未披露 = TROPION-Lung08。即在已披露结果的核心圈先例中，0/1 成功。仅陈述事实，不做概率推断。",
+        "extended_ring": "扩展圈客观汇总：OptiTROP-Lung05（放宽至 PD-L1≥1%、中国、不同 ADC）成功(1/1)；SigVie-002（同药单药、二线+）失败。合计扩展圈 1 成功 / 1 失败，权重低，仅供趋势参考。",
+        "note": "核心圈是 base rate 主锚点，但样本极小（仅 1 个完成态且失败）；扩展圈因可比性打折仅作背景。另注：EVOKE-03 终止的公开解读强调'帕博单药在 PD-L1 高人群本已高度有效'构成难以逾越的对照基线——此为对照臂强度问题，与 F6 关联。"
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F3",
+      "factor_name": "样本量与统计功效",
+      "tier": 1,
+      "data_available": true,
+      "evidence": {
+        "sample_size": 714,
+        "randomization_ratio": "1:1（约714例）",
+        "primary_endpoints": ["PFS (BICR, RECIST 1.1)", "OS"],
+        "dual_primary_endpoint_flag": true,
+        "assumed_effect_size": "统计设计文件中的预设效应量未在公开摘要/设计论文中给出具体数值（该信源未报告 HR 假设/把握度）",
+        "design_notes": "开放标签(open-label)；SV 每2周一次(1.8 mg/kg AiBW)，帕博 Q6W(400mg)。次要终点含研究者评估 PFS、cORR、DoR、安全性、PK、免疫原性。双主要终点意味 PFS 与 OS 均需达标才算成功。",
+        "source": {
+          "citation": "Reck M, et al. 'Frontline sigvotatug vedotin plus pembrolizumab vs pembrolizumab ... phase III study design (SigVie-003).' Future Oncol 2025;21(30):3891-3901 (2025-12-13); PMID 41388832 / PMC12758262。CT.gov NCT06758401；2026 ASCO 摘要 TPS8660",
+          "source_tier": "一级",
+          "disclosure_date": "2025-12-13"
+        }
+      },
+      "missing_reason": "预设效应量/把握度具体数值未公开披露；如需应检索统计分析计划(SAP)或 CT.gov 详细结局条目。"
+    },
+    {
+      "factor_id": "F4",
+      "factor_name": "靶点验证强度",
+      "tier": 2,
+      "data_available": true,
+      "evidence": {
+        "target": "Integrin β6 (IB6 / ITGB6, αvβ6)",
+        "expression_rate": "约 90% / >90% 的 NSCLC 肿瘤表达 IB6（Pfizer 及多篇一致）",
+        "prognosis_association": "IB6 高表达与多种癌症（含 NSCLC、结直肠、胃、宫颈）不良预后相关，为负向预后指标",
+        "validated_precedent": "无已获批的同靶点(IB6/αvβ6)药物——SV 被描述为'potential first-in-class' IB6 ADC。即该靶点尚无经Ⅲ期验证的成功先例。",
+        "target_biomarker_caveat": "SigVie-002 探索性分析未见 IB6 表达水平与 SV 临床获益的清晰暴露-反应关系；即靶点虽普遍表达且预后相关，但'表达量→获益'的人体验证在已读出Ⅲ期中未成立。",
+        "source": {
+          "citation": "Pfizer 新闻稿 2026-06-22；Lyon RP, et al. Mol Cancer Ther 2023;22:1444-1453；Targeted Oncology 'Sigvotatug Vedotin Misses OS End Point'(2026-06)",
+          "source_tier": "一级（期刊/公司）+ 二级（媒体转述暴露-反应结论）",
+          "disclosure_date": "2023-08-25(机制) / 2026-06-22(暴露-反应)"
+        }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F5",
+      "factor_name": "生物标志物富集策略合理性",
+      "tier": 2,
+      "data_available": true,
+      "evidence": {
+        "biomarker_cutoff": "PD-L1 TPS≥50%（用于富集的是 IO 伙伴的生物标志物，而非 ADC 自身靶点 IB6）",
+        "prospective_or_retrospective": "前瞻性验证切点——PD-L1 TPS≥50% 作为一线帕博单药人群的切点由 KEYNOTE-024 前瞻性确立，为成熟标准",
+        "historical_support": "KEYNOTE-024 前瞻性支持 PD-L1 TPS≥50% 一线帕博单药；该切点在监管与临床广泛采用。",
+        "enrichment_caveat": "富集依据为 PD-L1（伙伴药生物标志物），未用 SV 自身靶点 IB6 富集；结合 F4，SigVie-002 显示 IB6 表达量不预测 SV 获益，故该富集策略对'SV 组分是否获益'并无靶点层面前瞻依据。",
+        "source": {
+          "citation": "Reck M, et al. N Engl J Med (KEYNOTE-024, PD-L1-positive NSCLC)；SigVie-003 设计论文 Future Oncol 2025",
+          "source_tier": "一级（NEJM/设计论文）",
+          "disclosure_date": "KEYNOTE-024 历史数据 / 2025-12-13(设计)"
+        }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F6",
+      "factor_name": "对照组选择合理性",
+      "tier": 2,
+      "data_available": true,
+      "evidence": {
+        "control_arm": "帕博利珠单抗单药（400mg Q6W）",
+        "is_current_soc": "是——帕博单药为一线 PD-L1 TPS≥50%、无 EGFR/ALK 的 NSCLC 现行标准治疗（KEYNOTE-024）",
+        "control_historical_benchmark": "KEYNOTE-024 帕博单药一线 PD-L1≥50%：历史基准较高（该人群 mOS 已达 ~26 个月量级、ORR ~45% 量级）；真实世界（如塞尔维亚 225 例队列）mPFS 9.7、mOS 17.0 个月、ORR 36.4%、DCR 73.4%。对照臂本身高度有效。",
+        "control_strength_note": "对照臂强（活性对照，非安慰剂/化疗劣势臂）。EVOKE-03 终止的公开解读明确指出'帕博单药在 PD-L1 高人群已高度有效'是 ADC+IO 组合难以显著优效的关键原因——此为对目标试验直接相关的对照臂难度信号。",
+        "source": {
+          "citation": "KEYNOTE-024 (NEJM)；真实世界 Marković 等 Biomedicines 2025;13:1175；Targeted Oncology / CancerNetwork EVOKE-03 报道 2026-06",
+          "source_tier": "一级（NEJM/期刊）+ 二级（媒体转述）",
+          "disclosure_date": "历史 / 2026-06"
+        }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F7",
+      "factor_name": "监管沟通与终点认可",
+      "tier": 2,
+      "data_available": false,
+      "evidence": {
+        "regulatory_designations": ["本次检索未发现 sigvotatug vedotin 在 NSCLC 的公开突破性疗法认定(BTD)/快速通道/加速批准记录（检索命中的 vedotin 类 BTD 均为 enfortumab/brentuximab 等其他药物；Dato-DXd 的 BTD 亦为 EGFR 突变适应症，与 SV 无关）"],
+        "endpoint_regulatory_alignment": "终点采用双主要 PFS(BICR)+OS，为监管严格设计（两终点均需达标）。ACRO 来源(Tier3)称 Pfizer '跳过Ⅱ期，由Ⅰ期直接推进Ⅲ期'——若属实，反映早期数据基础相对单薄，但该点仅三级来源，待核验。SigVie-002(二线)已未达主要 OS，降低同项目加速批准可行性。",
+        "source": {
+          "citation": "Friends of Cancer Research BTD 数据库(2026-03)未见 SV；ACROBiosystems(Tier3, 2025-10)称跳过Ⅱ期；Pfizer 新闻稿 2026-06-22",
+          "source_tier": "一级（BTD 数据库，用于确认'未发现'）+ 三级（跳过Ⅱ期说法）",
+          "disclosure_date": "2026-03(BTD库) / 2025-10(ACRO)"
+        }
+      },
+      "data_retrieval_incomplete": true,
+      "retrieval_note": "标 data_available=false 系'在所检索的可靠信源中未发现 SV 的监管认定'，而非确证其绝对不存在；需检索 FDA 官方指定列表/Pfizer 完整披露以最终确认有无。'跳过Ⅱ期'为三级来源，待核验。",
+      "missing_reason": "未检索到 SV 在 NSCLC 的公开监管认定记录；不排除存在未公开或本次未命中的信息。"
+    },
+    {
+      "factor_id": "F8",
+      "factor_name": "公司披露语言线索",
+      "tier": 3,
+      "data_available": true,
+      "evidence": {
+        "disclosure_language_trend": "2025 年初(JPM 2025)：SV 被列为 Pfizer '2025 年顶级管线催化剂'之一，措辞为'potential first-in-class'。2026-06-22（SigVie-002 二线失败后）：措辞出现侧重转移——强调'联合 IO、更早治疗线'为'更有效的临床应用方向'（Peters 引语），对二线单药前景措辞明显降温；同时仍将 SV 纳入'2030 年前交付 8 个肿瘤重磅'的管线叙事。整体：由'广谱催化剂'向'择线择合(一线联合)重新聚焦'调整，非完全下架。",
+        "still_flagged_as_key_catalyst": "是（仍在管线催化剂/2030 目标叙事中，但重心从二线单药转向一线 SV+帕博与新型联合如 PD-1×VEGF 双抗 PF-4404）",
+        "source": {
+          "citation": "ACROBiosystems 2025-10（JPM 2025 转述, Tier3）；Pfizer 新闻稿 2026-06-22；Pfizer 'Showcases Oncology ... ASCO 2026'(2026-04-21)",
+          "source_tier": "三级（分析/聚合，含立场倾向）+ 一级（公司自述框架，注意为公司立场）",
+          "disclosure_date": "2025-01(JPM) / 2026-06-22"
+        }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F9",
+      "factor_name": "患者招募速度与试验进度",
+      "tier": 3,
+      "data_available": true,
+      "evidence": {
+        "enrollment_status": "Be6A Lung-02/SigVie-003 于 2025-07-23 开始入组（ASCO 2026 TPS8660 明确记载）；CT.gov 状态为 RECRUITING（招募中）。主要完成日期被前移：Nov 2026 → Aug 2026（LARVOL Sigma 记录的 CT.gov 变更，Tier3）",
+        "protocol_amendments": "本次检索未发现 Be6A Lung-02 的方案修订(protocol amendment)历史记录（该信源未报告）",
+        "source": {
+          "citation": "2026 ASCO 摘要 TPS8660（入组起始日）；LARVOL Sigma product news（Tier3，完成日期变更）；CT.gov NCT06758401",
+          "source_tier": "一级（ASCO/CT.gov）+ 三级（LARVOL 变更聚合）",
+          "disclosure_date": "2025-07-23(入组起) / 2025(完成日变更)"
+        }
+      },
+      "missing_reason": "未检索到方案修订历史；主要完成日前移的原因未说明。"
+    },
+    {
+      "factor_id": "F10",
+      "factor_name": "竞品格局/赛道拥挤度",
+      "tier": 3,
+      "data_available": true,
+      "evidence": {
+        "competing_pipelines": "一线 PD-L1 高 NSCLC 的 ADC+IO / 新型联合赛道拥挤：①TROPION-Lung08（Dato-DXd+帕博 vs 帕博单药，PD-L1≥50%，与目标试验设计几乎相同，直接竞品，进行中）；②EVOKE-03（sacituzumab govitecan+帕博 vs 帕博单药，PD-L1≥50%，已于 2026-06-08 失败终止）；③OptiTROP-Lung05（sac-TMT+帕博，TPS≥1%，中期正向）；④TROPION-Lung10（Dato-DXd+rilvegostomig vs 帕博，PD-L1≥50%）。此外 PD-1×VEGF 双抗赛道并进（ivonescimab、pumitamig/ROSETTA Lung-02、Pfizer 自有 PF-08634404）。Pfizer 自身另有 fetrastobart vedotin（PD-L1 导向 ADC，NSCLC Ⅲ期）。",
+        "landscape_note": "同一一线 PD-L1 高人群同时有多款 ADC+IO 与双抗在推进，其中与目标试验最同构的 TROPION-Lung08 为直接竞品；同赛道已出现一例明确失败(EVOKE-03)与一例正向(OptiTROP-Lung05)。",
+        "source": {
+          "citation": "Targeted Oncology / OncLive / Daiichi Sankyo & AstraZeneca 新闻稿 2023–2026；Merck+Gilead 2026-06-08；Pfizer ASCO 2026 预告 2026-04-21",
+          "source_tier": "二级（专业媒体）+ 一级（公司公告）",
+          "disclosure_date": "2023–2026（综合）"
+        }
+      },
+      "missing_reason": ""
+    }
+  ],
+  "retrieval_audit": {
+    "F1": "执行 query：'sigvotatug vedotin SGN-B6A IB6 ADC NSCLC'、'combination ORR 42.9% ASCO 2025 n'、'Sehgal ASCO 2026 8522 updated ORR PD-L1 high'。目标药物最新年份(2026)数据已检索并【已补全】：2026 ASCO 8522 摘要全文（含数据表，数据截止 2025-09-30）由用户提供，此前的 data_retrieval_incomplete 缺口已关闭，50%/80% 数值由一手来源确认并精确到 CI。当前缺口=仅剩 TPS≥50% 富集人群 n=5 的样本量局限（非检索缺口，而是数据本身样本小），已在 F1 中警示。",
+    "F2": "执行 query：'TROPION-Lung07/08 Dato-DXd pembro 1L NSCLC results'、'EVOKE-03 sacituzumab govitecan pembro PD-L1 high phase 3'、'OptiTROP-Lung05'。核心圈完成态先例已锁定 EVOKE-03(失败)；TROPION-Lung08 结果未披露(已标注)。遗漏风险=TROPION-Lung08 若已 topline 而本次未命中，将改变核心圈汇总——建议主控 Agent 补检。已检查同会议(2026 ASCO)相邻摘要(OptiTROP-Lung05、sac-TMT)。",
+    "F3": "执行 query：'Be6A Lung-02 NCT06758401 design sample size endpoint'。命中设计论文(Future Oncol 2025)+ASCO TPS8660+CT.gov。714/1:1/双主要 PFS(BICR)+OS 已二次核对。缺口=预设效应量未公开。",
+    "F4/F5/F6": "由 SigVie-002 topline(Pfizer 2026-06-22)、KEYNOTE-024、SigVie-003 设计论文交叉获得。IB6>90% 表达、无同靶点获批先例、IB6 暴露-反应阴性均有一手/二手支撑。对照臂强度(帕博单药高效)由 EVOKE-03 解读佐证。",
+    "F7": "执行 query：'sigvotatug vedotin breakthrough therapy fast track FDA'。未命中 SV 的 NSCLC 监管认定；命中的均为他药。标 data_available=false 并注明为'未发现'非'确无'。data_retrieval_incomplete=true。",
+    "F8/F9/F10": "由 Pfizer PR/ASCO 预告/LARVOL/竞品公司公告获得。F8/F9/F10 主体依赖 Tier2/Tier3，已如实标注信源等级与立场风险。",
+    "latest_readout_backstop": "已执行目标药物最新读出兜底检索（含 2026 年份词与 update/latest）：命中 SigVie-002 topline(2026-06-22)、2026 ASCO 8522、SigVie-003 设计(2025-12)、EVOKE-03 终止(2026-06-08)。确认已覆盖 SV 及最相关核心圈竞品的 2026 最新切面。"
+  },
+  "overall_data_integrity_notes": [
+    "本输出严格限于事实层，未对 Be6A Lung-02 结果做任何推测（预测为下游 Agent 职责）。",
+    "更新记录(2026-08-21)：F1 的 2026 ASCO 8522 联合数据已据用户提供的摘要全文补全并核对（数据截止 2025-09-30），data_retrieval_incomplete 由 true 改为 false。目前仅剩 F7(监管认定为'未发现'需最终确认)一处 data_retrieval_incomplete=true。",
+    "F1 使用警示：8522 中 SV+帕博在目标试验富集人群 PD-L1 TPS≥50% 的 cORR 为 80%，但样本仅 n=5（为全数据集中最强的正向数字，同时也是样本最小、最不稳健的一格）；且在 TPS<1% 与 TPS≥1% 中 cORR 均为 50%，PD-L1 高低未见明显 cORR 梯度。均为事实层记录，供下游权衡。",
+    "F2 核心圈完成态样本仅 1 且失败(EVOKE-03)；TROPION-Lung08 结果缺失是最大不确定来源，强烈建议主控 Agent 补检其 topline 状态。",
+    "多处数值随数据截止日变化（F1 单药 cORR 有 2023-12 与 2024-11 两切面；联合数据有 2025 ASCO n=21 与 2026 ASCO n=35 两切面），已并列保留并注明截止日，未做合并或四舍五入。"
+  ]
+}

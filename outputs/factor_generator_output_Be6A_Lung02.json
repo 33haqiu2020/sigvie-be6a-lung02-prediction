@@ -1,0 +1,98 @@
+{
+  "_meta": {
+    "agent": "预测因子生成Agent (Prediction Factor Generator)",
+    "target_trial": "Be6A Lung-02 / SigVie-003 (NCT06758401) — SV+帕博利珠单抗 vs 帕博利珠单抗单药，一线 aNSCLC PD-L1 TPS≥50%",
+    "precedent_trial": "SigVie-002 / Be6A Lung-01 (NCT06012435) — 已读出失败，作为先例教训",
+    "input_source": "parser_output_Be6A_Lung02.json（临床数据解析Agent，检索执行日 2026-08-21）",
+    "generated_date": "2026-08-22",
+    "scope_note": "本输出仅基于解析Agent提供的结构化 JSON，未引入外部检索或未经结构化验证的数据点。目标试验未读出，无法回测验证。"
+  },
+  "data_reconciliation": [
+    {
+      "factor": "F1 - 联合方案(SV+帕博)队列",
+      "relationship_type": "同一队列不同数据切面（非冲突，随访成熟）",
+      "primary_data": "以 2026 ASCO 8522（disclosure 2026-05/06，数据截止 2025-09-30，n=35治疗/28可评估，中位随访10.6mo）为主用切面",
+      "trend_reference": "2025 ASCO n=21（中位随访4.8mo，cORR 42.9%，mDOR NR）仅作趋势参考",
+      "decay_check": "随访由4.8mo延长至10.6mo后，缓解未见衰减、mDOR由NR成熟为8.1mo（TPS≥1%/非鳞）；相对变化非负向，不构成额外风险信号",
+      "note": "TPS≥50%(n=5) cORR 80% 与 TPS≥1%(n=18) 是子集/母集关系（80%的5例含于18例内），分别引用、不合并"
+    },
+    {
+      "factor": "F1 - 单药 cORR 多切面",
+      "relationship_type": "同一队列不同数据切面（不同数据截止/亚组定义）",
+      "primary_data": "取最新 JCO 2026 正刊(截止2024-11-26) cORR 19.0% (n=116)；非鳞紫杉烷未用亚组 29%",
+      "trend_reference": "ASCO2024 摘要 19.5%(n=113)、亚组31–32.5% 仅作趋势；新旧相对差<20%，无额外信号",
+      "note": "单药数据仅用于建立'联合优于单药'的对照，不直接进入目标试验概率锚定"
+    }
+  ],
+  "comparability_scores": [
+    {
+      "trial_name": "EVOKE-03 / KEYNOTE-D46 (SG+帕博 vs 帕博单药)",
+      "comparability_ring": "core",
+      "mechanism_similarity": 5,
+      "line_similarity": 5,
+      "biomarker_similarity": 5,
+      "phase1_signal_similarity": 3,
+      "overall_weight": "高",
+      "rationale": "四要素（ADC+PD-1机制、一线、TPS≥50%、帕博单药对照）与目标试验逐条对应，唯ADC靶点/载荷不同（TROP2/SN-38 vs IB6/MMAE）。是唯一已读出的核心圈先例，作为 base rate 主锚点，权重最高。结果=失败（2026-06-08终止，PFS数值改善未达显著、OS不太可能达标）。phase1_signal 评3：解析JSON未提供SG联合方案的Ⅰ期ORR/DoR，无法严格比对量级，仅按同为ADC+IO给中位分。"
+    },
+    {
+      "trial_name": "TROPION-Lung08 (Dato-DXd+帕博 vs 帕博单药)",
+      "comparability_ring": "core",
+      "mechanism_similarity": 5,
+      "line_similarity": 5,
+      "biomarker_similarity": 5,
+      "phase1_signal_similarity": 3,
+      "overall_weight": "高",
+      "rationale": "设计与目标试验高度同构（ADC+帕博 vs 帕博单药、一线、TPS≥50%、双主要PFS+OS），可比性最高。但顶线结果尚未公开（已确认为信息客观不存在，非检索遗漏），因此虽comparability为高，却暂不能计入 base rate——这是当前最大的单点不确定源。phase1_signal 同样因解析JSON未给Dato-DXd联合Ⅰ期数据而只能给中位分。"
+    },
+    {
+      "trial_name": "OptiTROP-Lung05 (sac-TMT+帕博 vs 帕博单药)",
+      "comparability_ring": "extended",
+      "mechanism_similarity": 5,
+      "line_similarity": 5,
+      "biomarker_similarity": 3,
+      "phase1_signal_similarity": 3,
+      "overall_weight": "低",
+      "rationale": "机制/治疗线/对照匹配，但富集切点放宽至TPS≥1%（含低表达）、中国人群、不同ADC，可比性打折→扩展圈低权重。结果正向（PFS HR 0.35、ORR 70.2% vs 42.0%），但最贴近目标人群的TPS≥50%亚组PFS HR 0.47较弱、且OS尚不成熟。仅作趋势背景，不得主导 base rate。phase1_signal 数据缺（仅有Ⅲ期ORR，非Ⅰ期口径）。"
+    },
+    {
+      "trial_name": "SigVie-002 / Be6A Lung-01 (SV单药 vs 多西他赛)",
+      "comparability_ring": "extended",
+      "mechanism_similarity": 2,
+      "line_similarity": 2,
+      "biomarker_similarity": 2,
+      "phase1_signal_similarity": 3,
+      "overall_weight": "低",
+      "rationale": "同药同靶点（SV/IB6），但为单药ADC（无IO）、二线+、非PD-L1富集、主要终点OS——机制与人群均不同，base rate权重低。价值在'同药失败教训'：总人群OS未达标、IB6表达无暴露-反应关系。phase1_signal 评3：其Ⅰ期即目标药自身单药信号（cORR 19%），同分子相关但为mono非combo。"
+    }
+  ],
+  "base_rate_synthesis": {
+    "core_ring": "核心圈已读出仅1个=EVOKE-03（失败），0/1；最同构的TROPION-Lung08结果尚未公开。核心圈完成态先例<3个，按规则如实标注样本局限并下调置信度，不以扩展圈数量掩盖。",
+    "extended_ring": "OptiTROP-Lung05成功（放宽人群）/ SigVie-002失败（同药单药），1胜1负，权重低，仅趋势参考。",
+    "direction": "可比证据方向偏负：唯一同构完成态先例失败，且其失败机理（强帕博对照难以逾越）直接适用于目标试验。"
+  },
+  "be6a_lung02_prediction": {
+    "pfs_probability_range": "40%-55%",
+    "os_probability_range": "20%-35%",
+    "supporting_factors": [
+      "联合早期信号显著优于单药且随访成熟未衰减：8522（截止2025-09-30、随访10.6mo）稳健切面TPS≥1%(n=18) cORR 50%、非鳞(n=19) 53%、DCR 90–95%、mDOR 8.1mo，富集人群TPS≥50% cORR 80%(n=5，样本极小)——远高于SV单药cORR 19%（F1）",
+      "设计规范、PFS把握度较足：N=714、1:1、活性对照帕博单药（一线TPS≥50% SoC/KEYNOTE-024）、双主要PFS(BICR)+OS，一线+PD-L1≥50%锁定IO获益人群（F3、F5、F6）",
+      "安全性可管理：全人群治疗相关≥3级TEAE 44%，71例中34例仍在治，未见明显阻断足剂量足疗程的信号，支持联合可执行性（F1 safety）"
+    ],
+    "risk_factors": [
+      "唯一完成态的同构核心圈先例失败：EVOKE-03（SG+帕博 vs 帕博单药、一线、TPS≥50%，设计几乎逐条对应）2026-06-08终止，PFS数值改善未达显著、OS'不太可能达标'，公开解读归因于'帕博单药在PD-L1高人群已高度有效'——直接read-through目标试验（F2核心圈0/1、F6）",
+      "对照门槛高＋双主要终点须双达标：帕博单药一线TPS≥50%历史mOS~26mo、ORR~45%（KEYNOTE-024）；而联合在稳健切面(n=18) cORR 50%对~45%增量有限，且TPS<1%与TPS≥1% cORR均为50%、无PD-L1梯度，削弱'PD-L1富集→联合获益'逻辑（F1、F5、F6）",
+      "靶点级前瞻支撑弱＋同药OS前科：SigVie-002总人群OS未达标且IB6表达无暴露-反应关系；富集用的是PD-L1而非SV靶点IB6，对'SV组分是否获益'无靶点级前瞻依据；最强正向数字TPS≥50% cORR 80%仅n=5、CI无法计算（F4、F5、F2扩展圈）"
+    ],
+    "pfs_vs_os_divergence_explanation": "PFS概率高于OS：①ADC+IO的增益最清晰地体现在缓解率/早期无进展（联合cORR、DCR、mDOR均优于单药），PFS更易读出获益；②OS门槛更高——帕博单药TPS≥50%历史OS已达~26mo量级，OS受后线治疗稀释、需更长随访，且双主要终点下OS为约束性终点（PFS达标而OS不达标仍算整体失败）；③同构先例EVOKE-03正是'PFS改善但OS不太可能达标'模式，同药SigVie-002亦栽在OS；④目标试验主要完成日被前移(Nov2026→Aug2026)，OS成熟度受限，进一步压低OS按期达显著的概率。故P(PFS达标)>P(OS达标)，整体成功受OS这一较弱终点约束，联合成功概率低于任一单终点。"
+  },
+  "confidence_level": "低（偏低）。原因：①可比先例数量——核心圈已读出仅n=1(EVOKE-03，失败)，远低于3个阈值，按规则下调；最同构的TROPION-Lung08顶线尚未公开，为最大不确定源。②证据一致性——F1联合信号正向，但唯一同构完成态先例失败、稳健切面对强对照增量有限、PD-L1无cORR梯度、富集非用SV靶点，存在方向性张力；最强数字(80%)仅n=5。③数据完整性——F1/F3/F6完整，但F7监管认定为'未发现'待最终确认、预设效应量未公开、目标试验未读出无法回测。故给较宽区间而非精确点估计。",
+  "backfill_status": {
+    "insufficient_data_flag": false,
+    "status": "not_resolvable_at_this_time",
+    "item": "TROPION-Lung08 (NCT05215340) 顶线 PFS/OS 结果",
+    "resolution": "经确认该试验初步结果尚未公开，信息客观不存在，非检索遗漏。不做任何假设性填补。",
+    "impact_on_prediction": "核心圈 base rate 维持 n=1(EVOKE-03 失败)；PFS/OS 区间与置信度(低)不变。此为当前证据下能给出的最诚实估计。",
+    "re_trigger_condition": "若 TROPION-Lung08 日后读出，应重新触发本项：正向读出→上调 PFS/OS 区间并收窄；再度失败→强化下调。届时核心圈将由 n=1 变为 n=2。"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "_comment": "临床数据解析Agent的标准输出模板（单通路，无回测）。每检索一个因子，填充一个factor对象。data_available为false时，evidence留空但必须说明missing_reason。SigVie-002作为先例数据完整提取。",
+  "meta": {
+    "target_drug": "sigvotatug vedotin",
+    "target_trial": "Be6A Lung-02 (NCT06758401)",
+    "precedent_trial": "SigVie-002 / Be6A Lung-01 (NCT06012435) — 已读出，作为先例教训",
+    "retrieval_timestamp": "本次检索执行的日期"
+  },
+  "factors": [
+    {
+      "factor_id": "F1",
+      "factor_name": "早期疗效信号强度与一致性",
+      "tier": 1,
+      "data_available": true,
+      "evidence": [
+        {
+          "finding": "客观陈述检索到的具体数据点，不含推测",
+          "metric_values": {
+            "ORR": "如适用",
+            "DoR": "如适用",
+            "PFS": "如适用，含HR和CI",
+            "OS": "如适用，含HR和CI"
+          },
+          "subgroup_consistency_note": "记录亚组间信号是否一致",
+          "source": {
+            "citation": "来源名称 + URL",
+            "source_tier": "一级 / 二级 / 三级",
+            "disclosure_date": "YYYY-MM-DD"
+          },
+          "data_retrieval_incomplete": true,
+          "retrieval_note": "说明是否只拿到摘要结论、未获取数据正文"
+        }
+      ],
+      "conflicting_data_note": "若多源数值不一致，在此并列说明",
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F2",
+      "factor_name": "历史成功率(base rate) — 两层同心圈",
+      "tier": 1,
+      "data_available": true,
+      "comparable_trials": [
+        {
+          "trial_name": "",
+          "drug_regimen": "",
+          "mechanism": "如 ADC+PD-1",
+          "line_of_therapy": "一线 / 二线+",
+          "biomarker_criteria": "",
+          "comparability_ring": "core（核心圈：同机制+同适应症治疗线） 或 extended（扩展圈：放宽一个维度）",
+          "inclusion_rationale": "为什么纳入、为什么归入此圈；扩展圈须注明放宽了哪个维度",
+          "phase3_outcome": "成功 / 失败 / 进行中",
+          "key_endpoint_result": "含HR和CI",
+          "source": {
+            "citation": "",
+            "source_tier": "",
+            "disclosure_date": ""
+          }
+        }
+      ],
+      "base_rate_summary": {
+        "core_ring": "核心圈客观汇总：N个中M个成功（仅陈述事实，不做概率推断）",
+        "extended_ring": "扩展圈客观汇总：N个中M个成功（权重低，仅供趋势参考）",
+        "note": "核心圈是 base rate 主锚点；扩展圈因可比性打折，仅作背景"
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F3",
+      "factor_name": "样本量与统计功效",
+      "tier": 1,
+      "data_available": true,
+      "evidence": {
+        "sample_size": 0,
+        "randomization_ratio": "如 1:1",
+        "primary_endpoints": ["PFS", "OS"],
+        "dual_primary_endpoint_flag": true,
+        "assumed_effect_size": "统计设计文件中的预设值（如可得）",
+        "source": {
+          "citation": "",
+          "source_tier": "",
+          "disclosure_date": ""
+        }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F4",
+      "factor_name": "靶点验证强度",
+      "tier": 2,
+      "data_available": true,
+      "evidence": {
+        "target": "Integrin β6 (IB6)",
+        "expression_rate": "在目标癌种中的表达率",
+        "prognosis_association": "与预后的关联",
+        "validated_precedent": "是否有已获批的同靶点药物",
+        "source": { "citation": "", "source_tier": "", "disclosure_date": "" }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F5",
+      "factor_name": "生物标志物富集策略合理性",
+      "tier": 2,
+      "data_available": true,
+      "evidence": {
+        "biomarker_cutoff": "如 PD-L1 TPS≥50%",
+        "prospective_or_retrospective": "前瞻性验证 / 回顾性拟合",
+        "historical_support": "该切点的历史数据支撑情况",
+        "source": { "citation": "", "source_tier": "", "disclosure_date": "" }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F6",
+      "factor_name": "对照组选择合理性",
+      "tier": 2,
+      "data_available": true,
+      "evidence": {
+        "control_arm": "对照臂方案",
+        "is_current_soc": "是否为当前标准治疗",
+        "control_historical_benchmark": "对照组历史疗效基准（如 KEYNOTE-024 数据）",
+        "source": { "citation": "", "source_tier": "", "disclosure_date": "" }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F7",
+      "factor_name": "监管沟通与终点认可",
+      "tier": 2,
+      "data_available": true,
+      "evidence": {
+        "regulatory_designations": ["如 breakthrough therapy / fast track"],
+        "endpoint_regulatory_alignment": "终点是否经监管沟通认可",
+        "source": { "citation": "", "source_tier": "", "disclosure_date": "" }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F8",
+      "factor_name": "公司披露语言线索",
+      "tier": 3,
+      "data_available": true,
+      "evidence": {
+        "disclosure_language_trend": "措辞是否发生降级/升级变化",
+        "still_flagged_as_key_catalyst": "是否仍被列为重点催化剂",
+        "source": { "citation": "", "source_tier": "", "disclosure_date": "" }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F9",
+      "factor_name": "患者招募速度与试验进度",
+      "tier": 3,
+      "data_available": true,
+      "evidence": {
+        "enrollment_status": "是否按计划完成",
+        "protocol_amendments": "方案修订历史",
+        "source": { "citation": "", "source_tier": "", "disclosure_date": "" }
+      },
+      "missing_reason": ""
+    },
+    {
+      "factor_id": "F10",
+      "factor_name": "竞品格局/赛道拥挤度",
+      "tier": 3,
+      "data_available": true,
+      "evidence": {
+        "competing_pipelines": "同适应症同人群的竞品数量及阶段",
+        "source": { "citation": "", "source_tier": "", "disclosure_date": "" }
+      },
+      "missing_reason": ""
+    }
+  ]
+}
